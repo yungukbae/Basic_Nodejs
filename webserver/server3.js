@@ -1,5 +1,6 @@
 const http = require('http');
 
+
 const parseCookies = (cookie = '') =>
     cookie
     .split(';')
@@ -9,6 +10,7 @@ const parseCookies = (cookie = '') =>
         acc[k.trim()] = decodeURIComponent(v);
         return acc;
     },{});
+
 
 http.createServer((req,res) => {
     const cookies = parseCookies(req.headers.cookie);
