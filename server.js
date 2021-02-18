@@ -1,17 +1,13 @@
 const http = require('http');
+const fs = require('fs');
 
 const server = http.createServer((req,res) => {
-    res.write('<h1>Hello</h1>');
-    res.end('<p>nodejs</p>');
+   fs.readFile('./index.html',(err,data)=>{
+       if(err){ //if there's an error.
+           throw err;   //throw error.
+       }
+       res.end(data);   //send data(buffer)
+   });
+}).listen(8081, () => {
+    console.log('8081 port ready...');
 });
-
-server.listen(8080);
-
-server.on('listening',()=>{
-    console.log('8080 port is ready...');
-});
-
-server.on('error', (error) => {
-    console.log('server on error');
-});
-
