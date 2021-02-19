@@ -13,6 +13,8 @@ const parseCookies = (cookie = '') =>
             return acc;
         },{});
 
+
+//
 http.createServer((req,res) => {
     const cookies = parseCookies(req.headers.cookie);
     if(req.url.startsWith('/login')){   
@@ -26,8 +28,8 @@ http.createServer((req,res) => {
         }); //redirect addres, header get cookie data
         res.end();
     }else if(cookies.name){ 
-        res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});
-        res.end(`Hello ${cookies.name}`);       //view name
+        res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});// charset=utf-8 => for korea
+        res.end(`Hello ${cookies.name}`);        //view name
     }else{ 
         fs.readFile('./index.html',(err,data) => {
             if(err){
